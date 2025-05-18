@@ -18,7 +18,7 @@ Projeto Rabbit - Speedtest customizado para Fibra Fácil Telecom.
 
 3. Clonar o repositório:
    ```bash
-   sudo git clone https://github.com/fibrafacil/rabbit-speedtest.git /opt/rabbit
+   sudo git clone https://github.com/fibrafacil/rabbit.git /opt/rabbit
    ```
 
 4. Instalar dependências Python:
