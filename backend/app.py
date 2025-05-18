@@ -32,4 +32,4 @@ def receive_ports():
     return jsonify({"status": "Recebido com sucesso"})
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="172.17.253.10", port=5000)

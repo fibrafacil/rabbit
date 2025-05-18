@@ -1,4 +1,4 @@
-fetch('/api/status')
+fetch('http://172.17.253.10:5000/api/status')
   .then(res => res.json())
   .then(data => {
     document.getElementById('status').innerText = data.status;
@@ -9,7 +9,7 @@ fetch('/api/status')
     document.getElementById('status').classList.replace('alert-info', 'alert-danger');
   });
 
-fetch('/api/data')
+fetch('http://172.17.253.10:5000/api/data')
   .then(res => res.json())
   .then(data => {
     const ctx = document.getElementById('grafico');
@@ -26,7 +26,7 @@ fetch('/api/data')
     });
   });
 
-fetch('/api/table')
+fetch('http://172.17.253.10:5000/api/table')
   .then(res => res.json())
   .then(rows => {
     const tbody = document.getElementById('tabela');
@@ -37,15 +37,19 @@ fetch('/api/table')
     });
   });
 
-fetch('/api/ports')
+fetch('http://172.17.253.10:5000/api/ports')
   .then(res => res.json())
   .then(data => {
     const tbody = document.getElementById('portas');
-    data.resultado.forEach(item => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `<td>${item.porta}</td><td>${item.status}</td>`;
-      tbody.appendChild(tr);
-    });
+    if(data.resultado && data.resultado.length > 0) {
+      data.resultado.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${item.porta}</td><td>${item.status}</td>`;
+        tbody.appendChild(tr);
+      });
+    } else {
+      tbody.innerHTML = '<tr><td colspan="2">Nenhum dado de portas recebido ainda.</td></tr>';
+    }
   })
   .catch(() => {
     document.getElementById('portas').innerHTML = '<tr><td colspan="2">Nenhum dado de portas recebido ainda.</td></tr>';

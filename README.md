@@ -10,6 +10,10 @@ Dashboard leve e simples para exibir status de servidores e gráfico de acessos.
 - Interface responsiva com Bootstrap
 - Backend em Flask (Python 3)
 
+## URL de acesso
+A dashboard estará disponível em:  
+http://172.17.253.10:5000
+
 ## Como rodar localmente
 ```bash
 git clone https://github.com/fibrafacil/rabbit.git
@@ -18,7 +22,5 @@ pip install flask
 python app.py
 ```
 
-Acesse: http://localhost:5000
-
 ## Deploy via cloud-init
-Incluído arquivo `cloud-init.yaml` que desativa AppArmor, clona o repositório, e inicia o app automaticamente via systemd.
+Incluído arquivo `cloud-init.yaml` que desativa AppArmor, cria ambiente virtual, clona o repositório, e inicia o app automaticamente via systemd.
