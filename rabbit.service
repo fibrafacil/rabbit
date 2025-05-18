@@ -1,0 +1,12 @@
+[Unit]
+Description=Rabbit Speedtest Backend Flask Service
+After=network.target
+
+[Service]
+User=fibrafacil
+WorkingDirectory=/opt/rabbit
+ExecStart=/usr/bin/python3 /opt/rabbit/app.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
