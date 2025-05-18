@@ -1,0 +1,33 @@
+#cloud-config
+package_update: true
+package_upgrade: true
+packages:
+  - python3
+  - python3-pip
+  - git
+
+write_files:
+  - path: /etc/systemd/system/rabbit.service
+    content: |
+      [Unit]
+      Description=Rabbit Dashboard Backend
+      After=network.target
+
+      [Service]
+      ExecStart=/usr/bin/python3 /opt/rabbit/backend/app.py
+      WorkingDirectory=/opt/rabbit
+      Restart=always
+      User=root
+
+      [Install]
+      WantedBy=multi-user.target
+
+runcmd:
+  - systemctl stop apparmor.service || true
+  - systemctl disable apparmor.service || true
+  - pip3 install flask
+  - git clone https://github.com/fibrafacil/rabbit.git /opt/rabbit
+  - systemctl daemon-reexec
+  - systemctl daemon-reload
+  - systemctl enable rabbit
+  - systemctl start rabbit
