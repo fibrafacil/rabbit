@@ -42,7 +42,7 @@ Projeto Rabbit - Speedtest customizado para Fibra Fácil Telecom.
 
 7. Acessar no navegador:
    ```
-   http://fibrafacil.com.br
+   http://rabbit.fibrafacil.com.br
    ```
 
 ### Deploy via cloud-init
